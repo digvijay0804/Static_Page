@@ -1,4 +1,4 @@
-name: testfile 
+name: Deploy Dist
 on: [push,workflow_dispatch]
 
 jobs:
@@ -7,18 +7,10 @@ jobs:
 
     steps:
         - name: get code 
-          uses: actions/checkout@v6.0.1
-        - name: install Node.js 
-          uses: actions/setup-node@v6.1.0 
-          with:
-            node-version: 20
-        - name: print node version
-          run: node -v 
-          
-        - name: Install Dependancy
-          run: npm ci
-          
-        - name: Run Tests
-          run: npm run test  
+          run :
+            echo "cloning repo.."
+            echo "${{tojson(github)}}"
+            git clone https://github.com/${{github.repository}}.git  
+
         
 
